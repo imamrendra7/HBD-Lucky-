@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HBD Dear Lucky</title>
+  
+  <style>
+    body {
+      margin: 0px;
+      padding: 0px;
+      font-family: 'Comic Sans MS', cursive;
+      background: #fadbe1;
+      /* overflow: hidden; */
+      overflow-y: auto;
+
+    }
+    .container {
+      margin: 0;
+      text-align: center;
+      padding-top: 20px;
+      background-image: url('bg.png');
+      background-size: cover;
+      height: 100vh;
+      position: relative;
+    }
+    h1 {
+      font-size: 4em;
+      color: #ff4d6d;
+      text-shadow: 2px 2px #fff;
+      margin: 50;
+    }
+    .subtitle {
+  color: #e1e1e1;              
+  font-size: 22px;             
+  font-family: 'Papyrus';     
+  font-weight: bold;           
+  text-shadow: 2px 2px 4px #000000; 
+  text-align: center;          
+}
+
+    .profile-pic {
+      border-radius: 50%;
+      width: 350px;
+      object-fit: cover;
+      border: 5px solid rgb(250, 250, 250);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      transition: opacity 1s ease-in-out; 
+    }
+.message-box {
+  display: inline-block;
+  background-color: rgb(246, 188, 197);
+  padding: 10px 20px;
+  border-radius: 45px;
+  font-size: 16px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+    .balloon {
+      position: absolute;
+      width: 100px;
+      animation: float 10s infinite ease-in-out;
+    }
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-50px); }
+      100% { transform: translateY(0); }
+    }
+    .footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      font-size: 12px;
+      color: #888;
+    }
+.love-sticker {
+  width: 100px;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-20px); }
+}
+
+/* Floating Hearts */
+.hearts::before, .hearts::after {
+  content: "❤️";
+  font-size: 2rem;
+  position: absolute;
+  animation: float 4s ease-in-out infinite;
+}
+
+.hearts::after {
+  left: 20px;
+  animation-delay: 2s;
+}
+
+@keyframes float {
+  0%   { top: 100%; opacity: 0; }
+  50%  { opacity: 1; }
+  100% { top: 0%; opacity: 0; }
+}
+
+.corner-love-sticker {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  width: 100px;
+  z-index: 9999;
+  animation: pulse 2s infinite;
+  pointer-events: none;
+}
+
+@keyframes pulse {
+  0%   { transform: scale(1); opacity: 0.8; }
+  50%  { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
+
+    #popup {
+      width: 600px;   
+      height: 500px; 
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff6f9;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+    #popup h3 {
+      margin-top: 0;
+      color: #ff4d6d;
+    }
+
+.btn {
+    font-family: 'Quicksand', sans-serif;
+    padding: 15px 40px;
+    font-size: 1.2em;
+    background: linear-gradient(45deg, #db8274, #6c5b7b);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    box-shadow: 0 5px 15px rgba(252, 92, 125, 0.4);
+    position: relative;
+    overflow: hidden;
+
+    min-width: 250px; 
+    text-align: center;
+
+}
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(252, 92, 125, 0.6);
+}
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+/* background image animataion */
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Comic Sans MS', cursive;
+  background-image: url('StarDD.jpg');
+  background-size: cover;             
+  background-repeat: repeat-x;       
+  background-position: center center; 
+  background-attachment: fixed;       
+  animation: scroll-bg 20s linear infinite;
+}
+
+@keyframes scroll-bg {
+  from { background-position: 0 0; }
+  to { background-position: -1000px 0; }
+}
+  </style>
+</head>
+<body>
+  <audio id="birthday-audio" autoplay muted loop>
+  <source src="happy-birthday-357371.mp3" type="audio/mpeg">
+</audio>
+
+<div class="popup">
+  <img src="grrr-rawr.gif" class="love-sticker" alt="love sticker" />
+  <div class="hearts"></div>
+</div>
+<img src="love-you-i-love-you.gif" 
+     class="corner-love-sticker" 
+     alt="Love Sticker" />
+
+<div class="container">
+  <img src="11429950.png" class="balloon" style="top:90px; left:10%; animation-delay: 1s;">
+  <img src="11429950.png" class="balloon" style="top:90px; right:10%; animation-delay: 1s;">
+  
+  <h1 style="margin-top: 0px;">Happy Birthday Jii💖</h1>
+  <p class="subtitle"><b>13 August,</b> It's Beautiful Day's of This World</p>
+  
+  <img id="profilePic" src="Lucky13.jpg" alt="Lucky's Photo" class="profile-pic">
+  
+  <br><br>
+  <div class="message-box">
+    <h2>To You My Dear ❤️</h2>
+    <p>My Dear Lucky, You are my very special girl.<br>Thank you for coming into my life. <br> I wish you all the best, lots of health and lots of joy. <br>I always hope we will celebrate many more birthdays like this together. <br> <h3>Happy Birthday to you. ❤️</h3></p>
+  </div>
+  
+  <br><br>
+
+<button id="loveStoryBtn" class="btn">Enter My Heart Gallery🙈💕</button>
+  <button class="btn" onclick="openPopup()">Click for Surprise 💌</button>
+</div>
+
+<div id="popup" style="display:none;">
+  <img src="happy-dance.gif" 
+       alt="Small Sticker"
+       style="width:100px; display:block; margin:0 auto 10px;"/>
+
+  <div style="display:flex; align-items:center; gap:15px;">
+    <img src="dudu-bubu-playing-funny.gif" 
+         alt="Big Sticker"
+         style="width:220px; border-radius:10px;"/>
+
+    <div style="max-width:300px;">
+      <h3 style="margin:0; color:#ff4d6d;">Now,It's Cake Cutting Time🎂</h3>
+      <p style="margin:5px 0 10px; font-size:18px;">
+        May this year be filled with lots of laughter, and sharing lots of secret baatain and unforgettable moment (Modiji Ke Digital Duniya mein😂🥳).
+        I’m so grateful to have you!
+      </p>
+       
+      <video autoplay muted loop playsinline width="100%" controls style="border-radius:10px;">
+        <source src="close-up-zoom-out-shot-of-woman-blowing-out-candles-on-birthday-cake-and-smili-SBV-346781325-preview.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <!-- Close Button h -->
+<div style="text-align:center; margin-top:10px;">
+  <button id="popup-close" , class="btn"
+          onclick="closePopup()"
+          style="padding:8px 16px; border:none; border-radius:18px; cursor:pointer;">
+    Close Kar Do
+  </button>
+</div>
+<script>
+  // Profile 
+  const images = ["Lucky13.jpg", "Lucky14.jpg", "Lucky10.jpg" , "Lucky1.jpg" , "Lucky12.jpg" , "Lucky16.jpg" , "Lucky8.jpg"];
+  let index = 0;
+  const profilePic = document.getElementById("profilePic");
+
+  setInterval(() => {
+    profilePic.style.opacity = 0; 
+    setTimeout(() => {
+      index = (index + 1) % images.length; 
+      profilePic.src = images[index];
+      profilePic.style.opacity = 1; 
+    }, 700); 
+  }, 4000); 
+
+    function openPopup() {
+      document.getElementById("popup").style.display = "block";
+    }
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+  window.onload = () => {
+    confetti({
+      particleCount: 150,
+      spread: 90,
+      origin: { y: 0.6 }
+    });
+    setTimeout(() => {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    }, 1000);
+  };
+  var duration = 15 * 1000;
+var animationEnd = Date.now() + duration;
+var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+function randomInRange(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+var interval = setInterval(function() {
+  var timeLeft = animationEnd - Date.now();
+
+  if (timeLeft <= 0) {
+    return clearInterval(interval);
+  }
+
+  var particleCount = 50 * (timeLeft / duration);
+  confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
+  confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
+}, 250);
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const audio = document.getElementById("birthday-audio");
+
+    // Unmute & play
+    audio.muted = false;
+    const playPromise = audio.play();
+
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          console.log("Audio started!");
+        })
+        .catch((error) => {
+          console.warn("Autoplay prevented. User interaction may be needed.", error);
+        });
+    }
+  });
+document.getElementById("loveStoryBtn").addEventListener("click", () => {
+    document.body.style.opacity = "1";
+    setTimeout(() => {
+        window.location.href = "Luckypic.html";
+    }, 1000); 
+});
+
+</script>
+</body>
+</html>
